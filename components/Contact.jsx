@@ -214,10 +214,25 @@ const ContactSection = () => {
               <h3 className="text-xl font-bold mb-6">Follow Me</h3>
 
               <div className="grid grid-cols-2 gap-4">
-                <SocialLink name="LinkedIn" icon="💼" href="#" />
-                <SocialLink name="GitHub" icon="💻" href="#" />
-                <SocialLink name="Twitter" icon="🐦" href="#" />
-                <SocialLink name="Instagram" icon="📸" href="#" />
+                <SocialLink
+                  name="LinkedIn"
+                  icon="💼"
+                  href="https://www.linkedin.com/in/james-bemshima-585a64260/"
+                  target="_blank"
+                />
+                <SocialLink
+                  name="GitHub"
+                  icon="💻"
+                  href="https://github.com/Bem20-james"
+                  target="_blank"
+                />
+                <SocialLink name="Twitter" icon="🐦" href="#" target="_blank" />
+                <SocialLink
+                  name="Instagram"
+                  icon="📸"
+                  href="#"
+                  target="_blank"
+                />
               </div>
             </div>
           </div>

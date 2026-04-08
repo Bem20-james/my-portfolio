@@ -20,23 +20,17 @@ const CareerSection = () => {
     const panels = gsap.utils.toArray(".career-panel");
     const N = panels.length;
 
-    // Kill existing ScrollTriggers
     ScrollTrigger.getAll().forEach((t) => t.kill());
-
-    if (!N || N === 0) return;
-
-    // Reset all panels to initial state
-    gsap.set(panels, { clearProps: "all" });
+    if (!N) return;
 
     // All panels except the first start below the viewport
     gsap.set(panels.slice(1), { yPercent: 100 });
 
-    // Create the scroll-triggered stacking animation
     ScrollTrigger.create({
       trigger: scrollContainerRef.current,
       start: "top top",
       end: "bottom bottom",
-      scrub: 0.8,
+      scrub: 0.6,
       onUpdate(self) {
         const prog = self.progress;
         const segSize = 1 / (N - 1);
@@ -46,9 +40,7 @@ const CareerSection = () => {
           const segProg = gsap.utils.clamp(0, 1, (prog - segStart) / segSize);
 
           // Slide panel i up from below
-          gsap.set(panels[i], {
-            yPercent: (1 - segProg) * 100,
-          });
+          gsap.set(panels[i], { yPercent: (1 - segProg) * 100 });
 
           // Scale + push back every already-visible panel beneath
           for (let j = 0; j < i; j++) {
@@ -63,13 +55,13 @@ const CareerSection = () => {
                 1,
                 (prog - kSegStart) / segSize,
               );
-              totalScale -= kProg * 0.05;
-              totalY -= kProg * 40;
-              totalOpacity = Math.max(0.4, totalOpacity - kProg * 0.15);
+              totalScale -= kProg * 0.06;
+              totalY -= kProg * 50;
+              totalOpacity = Math.max(0.3, totalOpacity - kProg * 0.2);
             }
 
             gsap.set(panels[j], {
-              scale: Math.max(0.7, totalScale),
+              scale: Math.max(0.6, totalScale),
               y: totalY,
               opacity: totalOpacity,
             });
@@ -78,9 +70,7 @@ const CareerSection = () => {
       },
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [currentData]);
 
   const handleTabChange = (tab) => {
@@ -115,10 +105,7 @@ const CareerSection = () => {
   };
 
   return (
-    <section
-      className="w-full py-20 px-6 lg:px-[8%] bg-gradient-to-b from-slate-50 via-white to-slate-50"
-      id="experience"
-    >
+    <section className="w-full py-20 px-6 lg:px-[8%]" id="experience">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div
@@ -139,7 +126,7 @@ const CareerSection = () => {
 
         {/* Tabs */}
         <div
-          className="flex justify-center gap-6 mb-20"
+          className="flex gap-6 mb-20"
           data-aos="fade-down"
           data-aos-duration="1000"
         >
@@ -181,7 +168,7 @@ const CareerSection = () => {
           ref={scrollContainerRef}
           style={{
             position: "relative",
-            height: `${currentData.length * 100}vh`,
+            height: `${currentData.length * 150}vh`, // Increased from 100vh to 150vh per card
           }}
         >
           <div
@@ -203,23 +190,23 @@ const CareerSection = () => {
                 className="career-panel"
                 style={{
                   position: "absolute",
-                  top: "50%",
-                  left: 0,
-                  right: 0,
-                  transform: "translateY(-50%)",
+                  inset: 0,
                   zIndex: index + 1,
-                  transformOrigin: "50% 50%",
+                  transformOrigin: "50% 0%",
                   willChange: "transform",
-                  padding: "0 1rem",
-                  maxWidth: "1200px",
-                  margin: "0 auto",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "0 2rem",
                 }}
               >
-                <ExperienceCard
-                  item={item}
-                  index={index}
-                  total={currentData.length}
-                />
+                <div style={{ width: "100%", maxWidth: "1200px" }}>
+                  <ExperienceCard
+                    item={item}
+                    index={index}
+                    total={currentData.length}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -231,7 +218,7 @@ const CareerSection = () => {
 
 const ExperienceCard = ({ item, index, total }) => {
   return (
-    <div className="w-full bg-white rounded-2xl shadow-2xl shadow-slate-900/10 border border-slate-200/60 overflow-hidden backdrop-blur-sm">
+    <div className="w-full bg-white dark:bg-black/60 rounded-2xl shadow-2xl shadow-slate-900/10 border border-slate-200/60 overflow-hidden backdrop-blur-sm dark:backdrop-blur-lg">
       {/* Card header with gradient accent */}
       <div className="h-2 bg-gradient-to-r from-brand via-brand/60 to-transparent" />
 

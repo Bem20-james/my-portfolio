@@ -15,7 +15,12 @@ const ovo = Ovo({
 export const metadata = {
   title: "Portfolio - Bem James",
   description: "",
-  logo: "/logo.png",
+  icons: {
+    icon: "/logo-main.png",
+  },
+  openGraph: {
+    images: ["/logo-main.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
