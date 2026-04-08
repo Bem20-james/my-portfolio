@@ -289,7 +289,7 @@ const ExperienceCard = ({ item, index, total }) => {
 
             {/* Tools/Focus section */}
             <div className="pt-6 border-t border-slate-200">
-              <div className="flex items-start gap-4">
+              <div className="flex items-center  gap-4">
                 <span className="text-[9px] text-slate-400 uppercase tracking-[0.25em] font-bold pt-1 whitespace-nowrap">
                   {item.type === "education" ? "Focus" : "Tools"}
                 </span>
@@ -297,7 +297,7 @@ const ExperienceCard = ({ item, index, total }) => {
                   {item.tools.map((tool, idx) => (
                     <span
                       key={idx}
-                      className="text-xs text-slate-600 font-medium tracking-wide"
+                      className="text-xs rounded-full bg-brand/40 px-3 py-1 shadow-sm font-medium tracking-wide  "
                     >
                       {tool}
                     </span>

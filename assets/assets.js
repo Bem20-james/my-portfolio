@@ -374,11 +374,18 @@ export const educationData = [
     organization: "Federal Government College Vandeikya, Benue State",
     role: "Sciences",
     achievements: [
-      "Mastered advanced React patterns including hooks, context API, and performance optimization techniques.",
-      "Gained expertise in TypeScript for building type-safe, scalable applications with enhanced developer experience.",
-      "Completed capstone project building a full-stack e-commerce platform with authentication and payments.",
+      "Participated in Cisco Networking Academy programs, gaining foundational knowledge in networking, cybersecurity, and IT fundamentals.",
+      "Actively engaged in science laboratory practicals across Physics, Chemistry, and Biology, developing strong analytical and problem-solving skills.",
+      "Member of the Science Club, contributing to collaborative experiments, academic discussions, and science-related activities.",
+      "Maintained strong academic performance in core science subjects, building a solid foundation for further studies in technology.",
     ],
-    tools: ["TypeScript", "React Hooks", "Redux", "Testing", "Performance"],
+    tools: [
+      "Science Laboratory",
+      "Networking Basics",
+      "Problem Solving",
+      "Research Skills",
+      "Collaboration",
+    ],
   },
   {
     type: "education",
